@@ -6,18 +6,20 @@
 /*   By: tsignore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/09 18:13:03 by tsignore          #+#    #+#             */
-/*   Updated: 2020/07/10 14:42:47 by tsignore         ###   ########.fr       */
+/*   Updated: 2020/07/10 14:58:23 by tsignore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_isspace(char c)
 {
-	if (c == '\t' || c == '\n' || c == '\v' || c == '\f' || c == '\r' || c == ' ')
+	if (c == '\t' || c == '\n'
+			|| c == '\v' || c == '\f'
+				|| c == '\r' || c == ' ')
 		return (1);
 	return (0);
 }
 
-int ft_isnum(char c)
+int	ft_isnum(char c)
 {
 	if (c > '9' || c < '0')
 		return (0);
@@ -39,15 +41,15 @@ int	ft_atoi(char *str)
 		{
 			if (str[i] == '-')
 				sign *= -1;
-			else if(ft_isnum(str[i]))
-				break;
+			else if (ft_isnum(str[i]))
+				break ;
 		}
 		i++;
 	}
 	while (str[i] && ft_isnum(str[i]))
 	{
-		res = res*10 + str[i] - '0';
+		res = res * 10 + str[i] - '0';
 		i++;
 	}
-	return(res * sign);
+	return (res * sign);
 }

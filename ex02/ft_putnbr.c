@@ -6,7 +6,7 @@
 /*   By: tsignore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/09 15:07:05 by tsignore          #+#    #+#             */
-/*   Updated: 2020/07/09 18:09:41 by tsignore         ###   ########.fr       */
+/*   Updated: 2020/07/10 15:02:53 by tsignore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	ft_putnbr(int nb)
 	if (n >= 10)
 	{
 		ft_putnbr(n / 10);
-      	ft_putchar(n % 10 + '0');
+		ft_putchar(n % 10 + '0');
 	}
 	else if (n < 10)
 		ft_putchar(n + '0');
