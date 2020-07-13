@@ -6,7 +6,7 @@
 /*   By: tsignore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/10 15:04:57 by tsignore          #+#    #+#             */
-/*   Updated: 2020/07/10 16:54:45 by tsignore         ###   ########.fr       */
+/*   Updated: 2020/07/13 11:35:57 by tsignore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int		ft_strlen(char *str)
 	int i;
 
 	i = 0;
-	while(str[i])
+	while (str[i])
 		i++;
 	return (i);
 }
@@ -69,7 +69,7 @@ void	ft_putnbr_base(int nbr, char *base)
 		{
 			ft_putchar('-');
 			n *= -1;
-		}	
+		}
 		if (n >= bs_len)
 		{
 			ft_putnbr_base((n / bs_len), base);
@@ -77,5 +77,5 @@ void	ft_putnbr_base(int nbr, char *base)
 		}
 		else if (n < bs_len)
 			ft_putchar(base[n]);
-	}		
+	}
 }
