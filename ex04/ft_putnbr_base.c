@@ -6,7 +6,7 @@
 /*   By: tsignore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/10 15:04:57 by tsignore          #+#    #+#             */
-/*   Updated: 2020/07/13 11:35:57 by tsignore         ###   ########.fr       */
+/*   Updated: 2020/07/13 21:34:55 by tsignore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ void	ft_putchar(char c)
 
 void	ft_putnbr_base(int nbr, char *base)
 {
-	unsigned int bs_len;
-	unsigned int n;
+	int			bs_len;
+	long int	n;
 
 	n = nbr;
 	if (base_iscorrect(base))
