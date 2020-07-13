@@ -6,7 +6,7 @@
 /*   By: tsignore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/13 11:40:49 by tsignore          #+#    #+#             */
-/*   Updated: 2020/07/13 15:15:49 by tsignore         ###   ########.fr       */
+/*   Updated: 2020/07/13 18:04:01 by tsignore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,17 +38,7 @@ int			check_base(char *base)
 	return (res);
 }
 
-int			ft_strlen(char *str)
-{
-	int i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-
-int			ft_pwr(int nbr, int pwr)
+int			ft_pw(int nbr, int pwr)
 {
 	int i;
 	int res;
@@ -67,14 +57,14 @@ int			ft_pwr(int nbr, int pwr)
 	return (res);
 }
 
-int			ft_is_neg(char *str)
+int			ft_is_neg(char *str, int begin)
 {
 	int i;
 	int sign;
 
 	i = 0;
 	sign = 1;
-	while (str[i])
+	while (i < begin)
 	{
 		sign = str[i] == '-' ? sign * -1 : sign;
 		i++;
@@ -82,33 +72,54 @@ int			ft_is_neg(char *str)
 	return (sign);
 }
 
-int			ft_atoi_base(char *str, char *base)
+int			ft_nd(char *str, char *base, int begin)
 {
-	int bs_len;
 	int i;
-	int res;
 	int j;
-	int end;
+	int pos;
 
-	if (!check_base(base))
-		return (0);
-	end = 0;
-	while (str[end] == '-' || str[end] == '+')
-		end++;
-	bs_len = ft_strlen(base);
-	i = ft_strlen(str) - 1;
-	res = 0;
-	while (i > end + 1)
+	i = begin;
+	while (str[i])
 	{
+		pos = 0;
 		j = 0;
 		while (base[j])
 		{
 			if (base[j] == str[i])
-				break ;
+				pos = 1;
 			j++;
 		}
-		res += j * ft_pwr(bs_len, (ft_strlen(str) - 1) - i);
-		i--;
+		if (pos == 0)
+			return (i);
+		i++;
 	}
-	return (res * ft_is_neg(str));
+	return (i);
+}
+
+int			ft_atoi_base(char *str, char *base)
+{
+	int i;
+	int res;
+	int j;
+	int bn;
+
+	if (!check_base(base))
+		return (0);
+	bn = 0;
+	while (str[bn] == 45 || str[bn] == 43 ||
+			str[bn] == 32 || (str[bn] >= 9 && str[bn] <= 13))
+		bn++;
+	i = ft_nd(str, base, bn);
+	res = 0;
+	while (i-- > bn)
+	{
+		j = -1;
+		while (base[++j])
+		{
+			if (base[j] == str[i])
+				break ;
+		}
+		res += j * ft_pw(ft_nd(base, base, 0), (ft_nd(str, base, bn) - 1) - i);
+	}
+	return (res * ft_is_neg(str, bn));
 }
