@@ -6,7 +6,7 @@
 /*   By: tsignore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/09 18:13:03 by tsignore          #+#    #+#             */
-/*   Updated: 2020/07/13 21:25:16 by tsignore         ###   ########.fr       */
+/*   Updated: 2020/07/14 10:50:29 by tsignore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,23 +29,21 @@ int	ft_isnum(char c)
 int	ft_atoi(char *str)
 {
 	int	i;
-	int sign;
-	int res;
+	int	sign;
+	int	res;
 
 	i = 0;
 	sign = 1;
 	res = 0;
 	while (str[i])
 	{
-		if (!ft_isspace(str[i]))
-		{
-			if (str[i] == '-')
-				sign *= -1;
-			else if (ft_isnum(str[i]))
-				break ;
-		}
+		sign = str[i] == '-' ? sign * -1 : sign;
+		if (ft_isnum(str[i]))
+			break ;
 		i++;
 	}
+	if (str[i] == '0')
+		return (0);
 	while (str[i] && ft_isnum(str[i]))
 	{
 		res = res * 10 + str[i] - '0';
